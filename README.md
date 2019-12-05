@@ -1,5 +1,8 @@
 # my-project
 
+## Description
+A project with vue. Include some of vue instance and routing. I try to add a form with Vuelidate for it's validation. There's axios with get methods. Maybe there'll be some update.
+
 ## Project setup
 ```
 yarn install
