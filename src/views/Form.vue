@@ -1,28 +1,28 @@
 <template>
   <div>
     <h1>This is Form</h1>
-    <form @submit.prevent="onSubmit($v)">
+    <form @submit.prevent="onSubmit">
       <div class="box">
-        <input type="text" placeholder="email" v-model="email" @blur="$v.email.$touch()">
+        <input type="text" placeholder="Email" v-model="email" @blur="$v.email.$touch()">
         <div class="box-error">
           <span v-if="!$v.email.email">It isn't email.</span>
           <span v-if="!$v.email.required && $v.email.$error">It's empty</span>
         </div>
 
-        <input type="text" placeholder="age" v-model="age" @blur="$v.age.$touch()">
+        <input type="text" placeholder="Age" v-model="age" @blur="$v.age.$touch()">
         <div class="box-error">
           <span v-if="!$v.age.numeric">It isn't number.</span>
           <span v-if="!$v.age.required && $v.age.$error">It's empty</span>
           <span v-if="!$v.age.min && $v.age.$error">Minimal is {{ $v.age.$params.min.min }}</span>
         </div>
 
-        <input type="password" placeholder="password" v-model="password" @blur="$v.password.$touch()">
+        <input type="password" placeholder="Password" v-model="password" @blur="$v.password.$touch()">
         <div class="box-error">
           <span v-if="!$v.password.required && $v.password.$error">It's empty</span>
           <span v-if="!$v.password.minLen && $v.password.$error">Minimal is {{ $v.password.$params.minLen.min }} character</span>
         </div>
 
-        <input type="password" placeholder="confirmPassword" v-model="confirmPassword" @blur="$v.confirmPassword.$touch()">
+        <input type="password" placeholder="Confirm Password" v-model="confirmPassword" @blur="$v.confirmPassword.$touch()">
         <div class="box-error">
           <span v-if="!$v.sameAs && $v.confirmPassword.$error">It's different</span>
         </div>
@@ -66,15 +66,15 @@ export default {
     }
   },
   methods: {
-    onSubmit (val) {
+    onSubmit () {
       const data = {
         email: this.email,
         age: this.age,
         password: this.password,
         confirmPassword: this.confirmPassword
       }
-      if (val.$invalid === false) {
-        console.log('submitted', data)
+      if (this.$v.$invalid === false) {
+        console.log('submitted', data);
       }
     }
   }
