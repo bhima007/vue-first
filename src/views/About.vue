@@ -1,17 +1,17 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <ListUsers :posts="posts"/>
+    <ListPosts :posts="posts"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import ListUsers from '@/components/ListUsers.vue'
+import ListPosts from '@/components/ListPosts.vue'
 
 export default {
   components: {
-    ListUsers
+    ListPosts
   },
   data () {
     return {
