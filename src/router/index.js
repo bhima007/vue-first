@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Form from '../views/Form.vue'
+import HelloWorld from '../components/HelloWorld.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,20 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: About
+    component: About,
+    children: [
+      {
+        path: '',
+      },
+      {
+        path: 'posts'
+      }
+    ]
+  },
+  {
+    path: '/about/:id',
+    name: 'aboutId',
+    component: HelloWorld
   },
   {
     path: '/form',

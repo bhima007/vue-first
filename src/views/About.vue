@@ -1,29 +1,37 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <ListPosts :posts="posts"/>
+    <ListUsers :users="users"/>
+    <button @click="navigateToPage('/about')">About</button>
+    <button @click="navigateToPage('/about/posts')">Posts</button>
+    <router-view />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import ListPosts from '@/components/ListPosts.vue'
+import ListUsers from '@/components/ListUsers.vue'
 
 export default {
   components: {
-    ListPosts
+    ListUsers
   },
   data () {
     return {
-      posts: []
+      users: []
     }
   },
   created () {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('https://jsonplaceholder.typicode.com/users')
       .then(res => {
-        this.posts = res.data
+        this.users = res.data
       })
       .catch(error => console.log('error', error))
+  },
+  methods: {
+    navigateToPage (par) {
+      this.$router.push(par)
+    }
   }
-  }
+}
 </script>
